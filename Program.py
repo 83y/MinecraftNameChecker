@@ -1,7 +1,6 @@
 import requests
 import time
 import os
-import time
 import colorama
 import ctypes
 import string

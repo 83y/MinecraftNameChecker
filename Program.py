@@ -82,8 +82,8 @@ def name_checker():
     choice()
 
 def name_joiner():
-    print(main_colour + "The file must be structured like this for them to be joined:\n\nHere\nAre\nA\nfew\nnames\n")
-    fileName = str(input(main_colour + "Enter the name of the file you want to join (eg. names.txt): "))
+    print(main_colour + "The file must be structured like this for them to be joined:\n\nHere\nAre\nA\nfew\nnames\nEnter the name of the file you want to join (eg. names.txt):")
+    fileName = str(input())
     file = open(fileName, "r")
     file = file.read()
     newFileNames = file.split("\n")

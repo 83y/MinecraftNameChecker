@@ -4,6 +4,8 @@ import os
 import colorama
 import ctypes
 import string
+import aiohttp
+import asyncio
 from datetime import datetime
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)

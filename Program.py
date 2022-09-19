@@ -19,11 +19,6 @@ try:
 except:
 	pass
 
-def program_exit(message = 'PRESS ANY KEY TO EXIT OUT'):
-    print(message)
-    os.system('pause >NULL')
-    return 0
-
 def name_checker():
     print(warning_colour + "Warning: " + main_colour + "Before you check, all current files (eg. invalid_names.txt) will be wiped when you go through with the name check\nEnter the file name you want to check names for (eg. names.txt): ")
     fileName = str(input())
@@ -99,6 +94,24 @@ def name_joiner():
     newFile.close()
     choice()
 
+def single_checker():
+        print(main_colour + "Enter the name you want to check:")
+        playerName = str(input())
+        if playerName.isalnum() != True or len(playerName) <= 2 or len(playerName) > 16:
+                print(Fore.RED + playerName + " - Invalid Name")
+                choice()
+        else:
+                temp_var = "https://api.mojang.com/users/profiles/minecraft/" + playerName
+                try:
+                    response = requests.get(temp_var)
+                    response = response.json()
+                    print(Fore.RED + playerName + " - Taken")
+                except:
+                    print(Fore.GREEN + playerName + " - Not Taken")
+
+                print(main_colour + "Your name have been successfully checked.")
+                choice()
+        
 def choice():
     ctypes.windll.kernel32.SetConsoleTitleW("Program")
     print(main_colour + "1) Check Names\n2) (Join / Format) Names\n3) Search for a Name")
@@ -108,7 +121,7 @@ def choice():
     elif choice == 2:
         name_joiner()
     else:
-        program_exit()
+        single_checker()
 
 choice()
 
